@@ -26,7 +26,7 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href=""><img src="assets/images/logo/adri-logo.png" alt="ADRI logo" width="161" height="51"></a>
+      <a class="brand" href=""><img src="assets/images/logo/adri-logo-combined.png" alt="ADRI" width="94" height="77"></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
@@ -67,8 +67,9 @@
     <section class="section">
       <div class="wrap subscribe-block">
         <h3>Want to stay connected?</h3>
-        <form class="subscribe" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-ajax data-thanks="Thanks for subscribing!">
-          <input type="hidden" name="_subject" value="New ADRI subscriber">
+        <form class="subscribe" action="YOUR_SCRIPT_URL" method="POST" data-ajax data-thanks="Thanks for subscribing!">
+          <input type="hidden" name="form" value="subscribe">
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <label for="sub-email" class="visually-hidden" style="position:absolute;left:-9999px">Email</label>
           <input id="sub-email" type="email" name="email" placeholder="Email" required>
           <button class="btn" type="submit">Subscribe</button>
@@ -81,7 +82,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <a href=""><img src="assets/images/logo/adri-logo-combined.png" alt="ADRI combined logo" width="94" height="77"></a>
+      <a href=""><img src="assets/images/logo/adri-logo-combined.png" alt="ADRI" width="94" height="77"></a>
       <p>ADRI, 3223 Avent Ferry Road Ste A0f PMB 120, Raleigh, North Carolina 27606</p>
       <p>&copy; Applied Data Research Institute, Inc. 2022. All Rights Reserved</p>
     </div>

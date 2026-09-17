@@ -26,7 +26,7 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="../"><img src="../assets/images/logo/adri-logo.png" alt="ADRI logo" width="161" height="51"></a>
+      <a class="brand" href="../"><img src="../assets/images/logo/adri-logo-combined.png" alt="ADRI" width="94" height="77"></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
@@ -49,8 +49,9 @@
         <p class="lede">Interested in getting in touch?</p>
         <h2>Send Us a Message</h2>
 
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-ajax data-thanks="Thanks for submitting!">
-          <input type="hidden" name="_subject" value="New message from the ADRI website">
+        <form action="YOUR_SCRIPT_URL" method="POST" data-ajax data-thanks="Thanks for submitting!">
+          <input type="hidden" name="form" value="contact">
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <div class="two-up">
             <div class="field">
               <label for="first-name">First Name</label>
@@ -72,6 +73,8 @@
           <button class="btn" type="submit">Send</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+
+        <p class="direct-email">Prefer to write directly? <a href="#" data-email="alexanderyoshizumi|applieddataresearch.org">Email us</a>.</p>
       </div>
     </section>
 
@@ -79,7 +82,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <a href="../"><img src="../assets/images/logo/adri-logo-combined.png" alt="ADRI combined logo" width="94" height="77"></a>
+      <a href="../"><img src="../assets/images/logo/adri-logo-combined.png" alt="ADRI" width="94" height="77"></a>
       <p>ADRI, 3223 Avent Ferry Road Ste A0f PMB 120, Raleigh, North Carolina 27606</p>
       <p>&copy; Applied Data Research Institute, Inc. 2022. All Rights Reserved</p>
     </div>
