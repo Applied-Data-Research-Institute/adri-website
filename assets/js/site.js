@@ -1,13 +1,3 @@
-// Direct email links: the address is stored as "user|domain" in a data
-// attribute and only assembled here, so it never appears as a plain
-// "name@domain" string in the HTML for scrapers to harvest.
-document.querySelectorAll('a[data-email]').forEach(function (a) {
-  var parts = a.getAttribute('data-email').split('|');
-  var address = parts[0] + String.fromCharCode(64) + parts[1];
-  a.href = 'mailto:' + address;
-  a.removeAttribute('data-email');
-});
-
 // Mobile navigation toggle
 document.querySelectorAll('.nav-toggle').forEach(function (btn) {
   btn.addEventListener('click', function () {

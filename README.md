@@ -1,6 +1,6 @@
 # Applied Data Research Institute — website
 
-A static rebuild of the ADRI site (previously hosted on Wix) as plain HTML/CSS,
+A static rebuild of the ADRI site as plain HTML/CSS,
 ready to publish on GitHub Pages. No build step, no framework, no dependencies.
 
 The URL structure matches the old site, so any links people already have keep working:
@@ -25,7 +25,7 @@ news/ev-resilience-webinars-and-workshops/index.html
 contact/index.html
 404.html                   Shown by GitHub Pages for missing URLs
 assets/css/style.css       All styling (colors and fonts are at the top)
-assets/js/site.js          Mobile menu, form submission, email-link assembly
+assets/js/site.js          Mobile menu + form submission
 assets/images/             All images, grouped by where they are used
   logo/                    adri-logo.png (header), adri-logo-combined.png (footer), favicon.png
   home/                    Home page hero strip and "Who We Are" photo
@@ -116,8 +116,9 @@ One-time setup, about five minutes:
    **Deploy**.
 4. Authorize when asked: pick your account, click *Advanced → Go to (project
    name)*, then *Allow*. This is normal for a script you wrote yourself.
-5. Copy the **Web app URL** (ends in `/exec`) and paste it in place of
-   `YOUR_SCRIPT_URL` in **both** `index.html` and `contact/index.html`.
+5. Copy the **Web app URL** (ends in `/exec`) and paste it as the `action` of
+   the `<form>` in **both** `index.html` and `contact/index.html`. (Already
+   done for the current deployment.)
 6. Commit and push, then test each form once. A row should appear in the
    matching tab within a second or two, and an email should arrive.
 
@@ -125,8 +126,8 @@ Notes:
 
 - Opening the `/exec` URL in a browser should show
   `{"result":"ok","message":"ADRI form receiver is running."}`, which confirms
-  the deployment. Until the URL is pasted in, the forms show a "not connected
-  yet" notice instead of sending.
+  the deployment. If the `action` is ever set to a placeholder or a non-Google URL, the
+  forms show a "not connected yet" notice instead of sending.
 - The forms tell the script which tab to use through a hidden `form` field
   (`subscribe` or `contact`). To add a third form later, add an entry to
   `FORMS` in the script and a hidden field to the new form.
@@ -151,14 +152,9 @@ Notes:
 
 - The forms never contain the address: notifications go to the account
   that deployed the Apps Script, so the address is not written anywhere.
-- The "Email us" link on the Contact page stores the address as
-  `user|domain` in a `data-email` attribute and `assets/js/site.js` assembles
-  the real `mailto:` link when the page loads. Simple harvesters that grep the
-  HTML for `name@domain` patterns will not find it. To change the address,
-  edit the `data-email` value; do not type a full address anywhere in the HTML.
-- This defeats bulk scrapers, not a determined person; any address that can
-  be clicked can eventually be read. Filtering on the mailbox side is the
-  backstop.
+- There is deliberately no email address or `mailto:` link anywhere on the
+  site; the contact form is the only way to reach ADRI. Keep it that way when
+  editing pages.
 
 ## Editing the site
 
