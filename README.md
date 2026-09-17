@@ -1,6 +1,6 @@
 # Applied Data Research Institute — website
 
-A static rebuild of the ADRI site as plain HTML/CSS,
+A static rebuild of the ADRI site (previously hosted on Wix) as plain HTML/CSS,
 ready to publish on GitHub Pages. No build step, no framework, no dependencies.
 
 The URL structure matches the old site, so any links people already have keep working:
@@ -27,7 +27,7 @@ contact/index.html
 assets/css/style.css       All styling (colors and fonts are at the top)
 assets/js/site.js          Mobile menu, form submission, email-link assembly
 assets/images/             All images, grouped by where they are used
-  logo/                    adri-logo-combined.png (header + footer), favicon.png
+  logo/                    adri-logo.png (header), adri-logo-combined.png (footer), favicon.png
   home/                    Home page hero strip and "Who We Are" photo
   banners/                 Top banner for About, Projects, News, Contact
   gallery/                 Three-photo strip used on About and Projects
@@ -70,7 +70,7 @@ folder, on a computer with internet access, run:
 python3 scripts/download_images.py
 ```
 
-It saves all 19 files into the right subfolders and skips any that already
+It saves all 20 files into the right subfolders and skips any that already
 exist. Commit and push the result. Do this before the Wix site is closed;
 after that the URLs in `scripts/image_manifest.txt` will stop working.
 

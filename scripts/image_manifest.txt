@@ -1,3 +1,4 @@
+assets/images/logo/adri-logo.png	https://static.wixstatic.com/media/3e101c_27d4bfa05e27421e94b7e61ceb5c4d92~mv2.png/v1/fill/w_322,h_102,al_c,q_85,enc_auto/image.png
 assets/images/logo/adri-logo-combined.png	https://static.wixstatic.com/media/3e101c_d5b30476a9fa4dc3a183c8a0356ae17b~mv2.png/v1/fill/w_188,h_154,al_c,q_85,enc_auto/image.png
 assets/images/home/home-hero-1.jpg	https://static.wixstatic.com/media/nsplsh_eb871f0e0f8f4e61aee410ae09dc5ed0~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/image.jpg
 assets/images/home/home-hero-2.jpg	https://static.wixstatic.com/media/nsplsh_7770553476654e476e4867~mv2_d_5472_3648_s_4_2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/image.jpg
