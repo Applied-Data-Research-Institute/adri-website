@@ -142,7 +142,8 @@ form { max-width: 620px; }
 }
 .btn:hover { background: var(--accent-deep); color: #fff; }
 .subscribe-block { text-align: center; }
-.subscribe { display: flex; gap: .75rem; max-width: 520px; margin-inline: auto; }
+.subscribe { display: flex; flex-wrap: wrap; gap: .75rem; max-width: 520px; margin-inline: auto; }
+.subscribe .form-status { flex-basis: 100%; margin-top: .25rem; }
 .subscribe input { flex: 1; }
 .form-status { margin-top: 1rem; font-weight: 600; color: var(--accent-deep); }
 .form-status:empty { display: none; }

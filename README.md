@@ -1,6 +1,6 @@
 # Applied Data Research Institute — website
 
-A static rebuild of the ADRI site as plain HTML/CSS,
+A static rebuild of the ADRI site (previously hosted on Wix) as plain HTML/CSS,
 ready to publish on GitHub Pages. No build step, no framework, no dependencies.
 
 The URL structure matches the old site, so any links people already have keep working:
@@ -98,12 +98,10 @@ Keep it clean when editing: search the repo for `http://` before committing.
 Both forms write to **one Google Sheets file**, each to its own tab:
 `Subscribers` (from the home-page box) and `Contact Messages` (from the
 Contact page). A small Google Apps Script attached to the spreadsheet receives
-each submission, appends a row to the right tab, and emails the Google account that deployed
-the script (so deploy it from the account that should get the notifications).
-No email address is written anywhere in the site or the script; to send
-notifications elsewhere, set `NOTIFY_EMAIL_OVERRIDE` in the Apps Script editor
-(not in this repo, if the repo is public), or set `NOTIFY = false` to turn
-them off.
+each submission and appends a row to the right tab. To be told about new
+submissions, use the spreadsheet's built-in alerts: **Tools → Notification
+settings → Edit notifications → "Any changes are made" → "Email - right away"**.
+No email address is written anywhere in the site or the script.
 
 One-time setup, about five minutes:
 
@@ -120,7 +118,7 @@ One-time setup, about five minutes:
    the `<form>` in **both** `index.html` and `contact/index.html`. (Already
    done for the current deployment.)
 6. Commit and push, then test each form once. A row should appear in the
-   matching tab within a second or two, and an email should arrive.
+   matching tab within a second or two.
 
 Notes:
 
@@ -140,8 +138,12 @@ Notes:
   fill it are discarded), an allowlist so unknown fields are ignored, a 5,000
   character cap per value, text starting with `= + - @` stored as plain text
   so it can never run as a spreadsheet formula, and a limit of 10
-  submissions per minute to protect the ~100/day email quota. Failed runs are
-  logged under **Apps Script → Executions**.
+  submissions per minute. Failed runs are logged under **Apps Script →
+  Executions**.
+- The page shows the thank-you message as soon as the request completes; it
+  can't read the script's reply (Apps Script answers via a redirect that
+  browsers block cross-origin), so a rejected submission, e.g. one over the
+  rate limit, still shows thanks. Check the Executions log if in doubt.
 - The endpoint is public by design (visitors post to it anonymously). The
   script exposes no way to read the sheet, and the sheet stays private.
 - If you later want the subscriber list in a separate file (for example to
@@ -150,8 +152,8 @@ Notes:
 
 ### Keeping the address off scrapers
 
-- The forms never contain the address: notifications go to the account
-  that deployed the Apps Script, so the address is not written anywhere.
+- The forms never contain an address; submissions go to a spreadsheet, and
+  alerts come from Google Sheets' own notification settings.
 - There is deliberately no email address or `mailto:` link anywhere on the
   site; the contact form is the only way to reach ADRI. Keep it that way when
   editing pages.

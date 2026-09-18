@@ -23,16 +23,13 @@ document.querySelectorAll('form[data-ajax]').forEach(function (form) {
     var button = form.querySelector('button[type="submit"]');
     button.disabled = true;
     status.textContent = 'Sending…';
-    // No custom headers: Apps Script only allows "simple" cross-origin requests.
-    fetch(form.action, { method: 'POST', body: new FormData(form) })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data && data.result === 'ok') {
-          status.textContent = form.getAttribute('data-thanks');
-          form.reset();
-        } else {
-          status.textContent = 'Something went wrong. Please try again.';
-        }
+    // Apps Script replies via a redirect the browser won't let us read
+    // cross-origin, so send in no-cors mode and treat a completed request
+    // as success. (The script itself still logs any failures.)
+    fetch(form.action, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+      .then(function () {
+        status.textContent = form.getAttribute('data-thanks');
+        form.reset();
       })
       .catch(function () {
         status.textContent = 'Something went wrong. Please try again.';

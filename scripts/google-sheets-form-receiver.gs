@@ -7,15 +7,9 @@
 // Each website form sends a hidden field "form" naming which tab to write to.
 // The script creates the tab and its column headers on first use.
 
-// Email notifications go to the Google account that deployed this script
-// (the web app runs "as Me"), so no address needs to be written here or in
-// the website. To send somewhere else, put an address in the string below.
-// To disable notifications entirely, set NOTIFY to false.
-var NOTIFY = true;
-var NOTIFY_EMAIL_OVERRIDE = '';
-
-// Cap on submissions per minute across all visitors. Protects the daily
-// email quota (~100/day) if someone scripts a flood of posts.
+// Cap on submissions per minute across all visitors, so a scripted flood
+// can't fill the sheet. (For notifications, use the spreadsheet's own
+// Tools -> Notification settings -> "any changes are made".)
 var MAX_PER_MINUTE = 10;
 
 // Which tab each form writes to, and the columns it gets, in order.
@@ -65,14 +59,6 @@ function doPost(e) {
     }));
     sheet.appendRow(row);
 
-    if (NOTIFY) {
-      var body = config.fields.map(function (f) { return prettify(f) + ': ' + sanitize(params[f] || ''); }).join('\n');
-      MailApp.sendEmail({
-        to: NOTIFY_EMAIL_OVERRIDE || Session.getEffectiveUser().getEmail(),
-        subject: 'ADRI website: new ' + (params.form === 'contact' ? 'message' : 'subscriber'),
-        body: body + '\n\nSheet: ' + ss.getUrl() + ' (tab: ' + config.tab + ')'
-      });
-    }
 
     return respond({ result: 'ok' });
   } catch (err) {
